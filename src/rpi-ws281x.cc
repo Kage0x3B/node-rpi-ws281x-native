@@ -226,19 +226,19 @@ void finalize(const Nan::FunctionCallbackInfo<v8::Value> &info) {
 
 NAN_MODULE_INIT(InitAll) {
   Nan::Set(target, Nan::New<String>("init").ToLocalChecked(),
-    GetFunction(Nan::New<FunctionTemplate>(init)).ToLocalChecked());
+    Nan::GetFunction(Nan::New<FunctionTemplate>(init)).ToLocalChecked());
 
-  Nan::Set(target, Nan::New<String>("setBrightness").ToLocalChecked(),
+  /*Nan::Set(target, Nan::New<String>("setBrightness").ToLocalChecked(),
     GetFunction(Nan::New<FunctionTemplate>(setBrightness)).ToLocalChecked());
 
   Nan::Set(target, Nan::New<String>("reset").ToLocalChecked(),
-    GetFunction(Nan::New<FunctionTemplate>(reset)).ToLocalChecked());
+    GetFunction(Nan::New<FunctionTemplate>(reset)).ToLocalChecked());*/
 
   Nan::Set(target, Nan::New<String>("render").ToLocalChecked(),
-    GetFunction(Nan::New<FunctionTemplate>(render)).ToLocalChecked());
+           Nan::GetFunction(Nan::New<FunctionTemplate>(render)).ToLocalChecked());
 
   Nan::Set(target, Nan::New<String>("finalize").ToLocalChecked(),
-    GetFunction(Nan::New<FunctionTemplate>(finalize)).ToLocalChecked());
+           Nan::GetFunction(Nan::New<FunctionTemplate>(finalize)).ToLocalChecked());
 }
 
 NODE_MODULE(addon, InitAll)
